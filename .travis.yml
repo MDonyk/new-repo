@@ -1,9 +1,21 @@
 language: ruby
 
-os: linux
-rvm: 2.6.3
 jobs:
   include:
-    - stage: "sleep 109"
-      script: sleep 10
-      
+    - name: "Ruby 2.6"
+      rvm: 2.6
+      env:
+        - MY_ENV_VAR=foo
+
+    - name: "Ruby 2.7"
+      rvm: 2.7
+      env:
+        - MY_ENV_VAR=bar
+
+    - name: "Ruby 3.0"
+      rvm: 3.0
+      env:
+        - MY_ENV_VAR=baz
+
+before_install:
+  - gem install bundler -v '>= 2.2.0'
